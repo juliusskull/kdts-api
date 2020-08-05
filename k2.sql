@@ -1,19 +1,16 @@
-/*
-Navicat MySQL Data Transfer
+DROP TABLE IF EXISTS `cadetes`;
+CREATE TABLE `cadetes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `usuario` varchar(50) DEFAULT NULL,
+  `id_comercio` int(11) DEFAULT NULL,
+  `fchalta` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
-Source Server         : local
-Source Server Version : 50525
-Source Host           : localhost:3306
-Source Database       : k2
-
-Target Server Type    : MYSQL
-Target Server Version : 50525
-File Encoding         : 65001
-
-Date: 2020-08-02 23:16:51
-*/
-
-SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Records of cadetes
+-- ----------------------------
+INSERT INTO `cadetes` VALUES ('1', 'kdt-2', '1', '2019-01-24 14:46:12');
 
 -- ----------------------------
 -- Table structure for `comercios`
@@ -25,12 +22,14 @@ CREATE TABLE `comercios` (
   `descripcion` varchar(200) DEFAULT NULL,
   `fchalta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of comercios
 -- ----------------------------
 INSERT INTO `comercios` VALUES ('1', 'kdt', 'kdts', '2020-08-02 22:41:49');
+INSERT INTO `comercios` VALUES ('2', 'kdt-2', 'kdts-2', '2019-01-24 14:46:12');
+INSERT INTO `comercios` VALUES ('3', 'kdt-2', null, '2019-01-24 14:46:12');
 
 -- ----------------------------
 -- Table structure for `configuracion`

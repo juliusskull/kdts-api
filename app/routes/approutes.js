@@ -11,6 +11,7 @@ module.exports = function(app) {
   var sincronizarList = require('../controllers/sincronizarController');
   var usuarioList = require('../controllers/usuarioController');
   var comercioList = require('../controllers/comerciosController');
+  var cadeteList = require('../controllers/cadetesController');
   var seguridad = require('../controllers/seguridadController');
   var upload = require('../controllers/uploadController');
   var creador1 = require('../controllers/creador1Controller');
@@ -49,6 +50,10 @@ module.exports = function(app) {
     app.route('/comercios')
     .get(comercioList.list_all_Comercioss)
     .post(comercioList.create_a_Comercios);
+
+    app.route('/cadetes')
+    .get(cadeteList.list_all_Cadetess)
+    .post(cadeteList.create_a_Cadetes);
 
     app.route('/usuario/:UsuarioId')
     .get(usuarioList.read_a_Usuario)
