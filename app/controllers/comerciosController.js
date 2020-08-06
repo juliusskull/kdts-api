@@ -65,7 +65,7 @@ exports.read_a_Comercios_usuario = function(req, res) {
 };
 
 exports.update_a_Comercios = function(req, res) {
-  Comercios.updateById(req.params.ComerciosId, new Comercios(req.body), function(err, Comercios) {
+  Comercios.updateById(req.params.id, new Comercios(req.body), function(err, Comercios) {
     if (err)
       res.send(err);
     res.json(Comercios);

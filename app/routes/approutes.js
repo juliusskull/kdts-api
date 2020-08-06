@@ -15,7 +15,8 @@ module.exports = function(app) {
   var seguridad = require('../controllers/seguridadController');
   var upload = require('../controllers/uploadController');
   var creador1 = require('../controllers/creador1Controller');
-  
+  var productoList = require('../controllers/productosController');
+
   app.use(fileUpload());
   // todoList Routes
   app.route('/creador1')
@@ -51,9 +52,19 @@ module.exports = function(app) {
     .get(comercioList.list_all_Comercioss)
     .post(comercioList.create_a_Comercios);
 
+    app.route('/comercios/:id')   
+    .put(comercioList.update_a_Comercios);
+
     app.route('/cadetes')
     .get(cadeteList.list_all_Cadetess)
     .post(cadeteList.create_a_Cadetes);
+
+    app.route('/productos')
+    .get(productoList.list_all_Productoss)
+    .post(productoList.create_a_Productos);
+
+    app.route('/productos/:id')
+    .put(productoList.update_a_Productos);
 
     app.route('/usuario/:UsuarioId')
     .get(usuarioList.read_a_Usuario)

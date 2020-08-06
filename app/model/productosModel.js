@@ -1,17 +1,17 @@
 'user strict';
 var sql = require('../db.js');
 
-//Comercios object constructor
-var Comercios = function(Comercios){
-    this.usuario = Comercios.usuario;
-    this.descripcion = Comercios.descripcion;
-    this.logo = Comercios.logo;
-    this.lat = Comercios.lat;
-    this.lng = Comercios.lng;
-    //this.fchalta = Comercios.fchalta;
+//Productos object constructor
+var Productos = function(Productos){
+    
+    this.id_negocio = Productos.id_negocio;
+    this.descripcion = Productos.descripcion;
+    this.precio = Productos.precio;
+    this.foto = Productos.foto;
+    this.fchalta = Productos.fchalta;
 };
-Comercios.createComercios = function (newComercios, result) {    
-        sql.query("INSERT INTO comercios set ?", newComercios, function (err, res) {
+Productos.createProductos = function (newProductos, result) {    
+        sql.query("INSERT INTO Productos set ?", newProductos, function (err, res) {
             console.log("error: -----------");
                 if(err) {
                     console.log("error: "+ err.message, err);
@@ -23,8 +23,8 @@ Comercios.createComercios = function (newComercios, result) {
                 }
             });           
 };
-Comercios.getComerciosById = function (ComerciosId, result) {
-        sql.query("Select id from comercios where id = ? ", ComerciosId, function (err, res) {             
+Productos.getProductosById = function (ProductosId, result) {
+        sql.query("Select id from Productos where id = ? ", ProductosId, function (err, res) {             
                 if(err) {
                     console.log("error: ", err);
                     result(err, null);
@@ -36,22 +36,22 @@ Comercios.getComerciosById = function (ComerciosId, result) {
             });   
 };
 
-Comercios.getAllComercios = function (result) {
-        sql.query("Select * from comercios", function (err, res) {
+Productos.getAllProductos = function (result) {
+        sql.query("Select * from Productos", function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);
                     result(null, err);
                 }
                 else{
-                  console.log('Comercioss : ', res);  
+                  console.log('Productoss : ', res);  
 
                  result(null, res);
                 }
             });   
 };
-Comercios.updateById = function(id, Comercios, result){
-  sql.query("UPDATE comercios SET descripcion = ?,logo =?,lat=?,lng=? WHERE id = ?", [Comercios.descripcion,Comercios.logo,Comercios.lat,Comercios.lng, id], function (err, res) {
+Productos.updateById = function(id, Productos, result){
+  sql.query("UPDATE Productos SET  precio = ?  WHERE id = ?", [Productos.precio, id], function (err, res) {
           if(err) {
               console.log("error: ", err);
                 result(null, err);
@@ -61,8 +61,8 @@ Comercios.updateById = function(id, Comercios, result){
                 }
             }); 
 };
-Comercios.remove = function(id, result){
-     sql.query("DELETE FROM comercios WHERE id = ?", [id], function (err, res) {
+Productos.remove = function(id, result){
+     sql.query("DELETE FROM Productos WHERE id = ?", [id], function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);
@@ -75,4 +75,4 @@ Comercios.remove = function(id, result){
             }); 
 };
 
-module.exports= Comercios;
+module.exports= Productos;
