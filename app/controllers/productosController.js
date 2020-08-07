@@ -1,6 +1,6 @@
 'use strict';
 
-var Productos = require('../model/ProductosModel.js');
+var Productos = require('../model/productosModel.js');
 
 exports.list_all_Productoss = function(req, res) {
   console.log('res aqui');
