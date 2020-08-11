@@ -8,7 +8,7 @@ var Cadetes = function(Cadetes){
     this.fchalta = Cadetes.fchalta;
 };
 Cadetes.createCadetes = function (newCadetes, result) {    
-        sql.query("INSERT INTO Cadetes set ?", newCadetes, function (err, res) {
+        sql.query("INSERT INTO cadetes set ?", newCadetes, function (err, res) {
             console.log("error: -----------");
                 if(err) {
                     console.log("error: "+ err.message, err);
@@ -34,7 +34,7 @@ Cadetes.getCadetesById = function (CadetesId, result) {
 };
 
 Cadetes.getAllCadetes = function (result) {
-        sql.query("Select * from Cadetes", function (err, res) {
+        sql.query("Select * from cadetes", function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);
@@ -48,7 +48,7 @@ Cadetes.getAllCadetes = function (result) {
             });   
 };
 Cadetes.updateById = function(id, Cadetes, result){
-  sql.query("UPDATE Cadetes SET nro_Cadetes = ? WHERE id = ?", [Cadetes.Cadetes, id], function (err, res) {
+  sql.query("UPDATE cadetes SET nro_Cadetes = ? WHERE id = ?", [Cadetes.Cadetes, id], function (err, res) {
           if(err) {
               console.log("error: ", err);
                 result(null, err);
@@ -59,7 +59,7 @@ Cadetes.updateById = function(id, Cadetes, result){
             }); 
 };
 Cadetes.remove = function(id, result){
-     sql.query("DELETE FROM Cadetes WHERE id = ?", [id], function (err, res) {
+     sql.query("DELETE FROM cadetes WHERE id = ?", [id], function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);

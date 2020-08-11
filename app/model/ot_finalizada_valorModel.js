@@ -10,7 +10,7 @@ var Ot_finalizada_valor = function(Ot_finalizada_valor){
 
 };
 Ot_finalizada_valor.createOt_finalizada_valor = function (newOt_finalizada_valor, result) {
-        sql.query("INSERT INTO Ot_finalizada_valor set ?", newOt_finalizada_valor, function (err, res) {
+        sql.query("INSERT INTO ot_finalizada_valor set ?", newOt_finalizada_valor, function (err, res) {
                 
                 if(err) {
                     console.log("error: ", err);
@@ -23,7 +23,7 @@ Ot_finalizada_valor.createOt_finalizada_valor = function (newOt_finalizada_valor
             });
 };
 Ot_finalizada_valor.getOt_finalizada_valorById = function (Ot_finalizada_valorId, result) {
-        sql.query("Select id from Ot_finalizada_valor where nro_Ot_finalizada_valor = ? ", Ot_finalizada_valorId, function (err, res) {             
+        sql.query("Select id from ot_finalizada_valor where nro_Ot_finalizada_valor = ? ", Ot_finalizada_valorId, function (err, res) {             
                 if(err) {
                     console.log("error: ", err);
                     result(err, null);
@@ -47,7 +47,7 @@ Ot_finalizada_valor.getOt_finalizada_valorByUsuario = function (Ot_finalizada_va
         });   
 };
 Ot_finalizada_valor.getAllOt_finalizada_valor = function (result) {
-        sql.query("Select * from Ot_finalizada_valor", function (err, res) {
+        sql.query("Select * from ot_finalizada_valor", function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);
@@ -61,7 +61,7 @@ Ot_finalizada_valor.getAllOt_finalizada_valor = function (result) {
             });   
 };
 Ot_finalizada_valor.updateById = function(id, Ot_finalizada_valor, result){
-  sql.query("UPDATE Ot_finalizada_valor SET nro_Ot_finalizada_valor = ? WHERE id = ?", [Ot_finalizada_valor.Ot_finalizada_valor, id], function (err, res) {
+  sql.query("UPDATE ot_finalizada_valor SET nro_Ot_finalizada_valor = ? WHERE id = ?", [Ot_finalizada_valor.Ot_finalizada_valor, id], function (err, res) {
           if(err) {
               console.log("error: ", err);
                 result(null, err);
@@ -72,7 +72,7 @@ Ot_finalizada_valor.updateById = function(id, Ot_finalizada_valor, result){
             }); 
 };
 Ot_finalizada_valor.remove = function(id, result){
-     sql.query("DELETE FROM Ot_finalizada_valor WHERE id = ?", [id], function (err, res) {
+     sql.query("DELETE FROM ot_finalizada_valor WHERE id = ?", [id], function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);
