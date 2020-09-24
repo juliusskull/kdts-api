@@ -23,20 +23,21 @@ exports.create_a_OT = function(req, res) {
   var new_OT = new OT(req.body);
 
   //handles null error 
+  /*
    if(!new_OT.OT || !new_OT.status){
 
             res.status(400).send({ error:true, message: 'Please provide OT/status' });
 
         }
 else{
-  
+  */
   OT.createOT(new_OT, function(err, OT) {
     
     if (err)
       res.send(err);
     res.json(OT);
   });
-}
+//}
 };
 
 

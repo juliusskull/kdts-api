@@ -34,7 +34,11 @@ module.exports = function(app) {
   
     app.route('/ot')
     .get(otList.list_all_OTs)
-    .post(otList.list_all_OTs);
+    .post(otList.create_a_OT);
+
+    app.route('/pedido')
+    .get(otList.list_all_OTs)
+    .post(otList.create_a_OT);
 
     app.route('/ot/legajo/:legajo')
     .get(otList.read_a_OT_usuario)
@@ -80,6 +84,7 @@ module.exports = function(app) {
     .post(upload.subir_archivo);
     
 
+/*
     app.post('/upload',(req,res) => {
     let EDFile = req.files.file;
     EDFile.mv(`./files/${EDFile.name}`,err => {
@@ -88,5 +93,5 @@ module.exports = function(app) {
         return res.status(200).send({ message : 'File upload' })
       })
     });
-    
+    */
   };

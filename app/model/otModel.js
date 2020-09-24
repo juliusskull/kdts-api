@@ -3,9 +3,12 @@ var sql = require('../db.js');
 
 //OT object constructor
 var OT = function(OT){
-    this.OT = OT.OT;
-    this.status = OT.status;
-    this.created_at = new Date();
+    this.id_motivo = OT.id_producto;
+    this.cod_empleado_asig = OT.id_cadete;
+    this.cod_cuadrilla_asig= OT.id_usuario;
+    this.lat = OT.lat;
+    this.lng = OT.lng;
+    this.fchalta = new Date();
 };
 OT.createOT = function (newOT, result) {    
         sql.query("INSERT INTO ot set ?", newOT, function (err, res) {
@@ -45,7 +48,7 @@ OT.getOTByUsuario = function (OTId, result) {
         });   
 };
 OT.getAllOT = function (result) {
-        sql.query("Select * from ot", function (err, res) {
+        sql.query("Select id_motivo as id_producto,cod_empleado_asig as id_cadete,cod_cuadrilla_asig as id_usuario, lat, lng,fchalta from ot", function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);
