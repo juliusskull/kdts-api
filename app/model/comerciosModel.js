@@ -37,7 +37,7 @@ Comercios.getComerciosById = function (ComerciosId, result) {
 };
 
 Comercios.getAllComercios = function (result) {
-        sql.query("Select * from comercios", function (err, res) {
+        sql.query("Select * from comercios where fchcad is null", function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);

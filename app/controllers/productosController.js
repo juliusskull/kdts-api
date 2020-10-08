@@ -72,6 +72,13 @@ exports.update_a_Productos = function(req, res) {
   });
 };
 
+exports.caducar_a_Productos = function(req, res) {
+  Productos.caducarById(req.params.id, new Productos(req.body), function(err, Productos) {
+    if (err)
+      res.send(err);
+    res.json(Productos);
+  });
+};
 
 exports.delete_a_Productos = function(req, res) {
 

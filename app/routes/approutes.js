@@ -63,8 +63,12 @@ module.exports = function(app) {
     .get(productoList.list_all_Productoss)
     .post(productoList.create_a_Productos);
 
+
     app.route('/productos/:id')
     .put(productoList.update_a_Productos);
+
+    app.route('/productos/caducar/:id')
+    .post(productoList.caducar_a_Productos);
 
     app.route('/usuario/:UsuarioId')
     .get(usuarioList.read_a_Usuario)

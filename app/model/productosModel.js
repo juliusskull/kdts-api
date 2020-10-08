@@ -61,6 +61,19 @@ Productos.updateById = function(id, Productos, result){
                 }
             }); 
 };
+
+Productos.caducarById = function(id, Productos, result){
+    sql.query("UPDATE Productos SET  fchcad = CURRENT_TIMESTAMP  WHERE id = ?", [id], function (err, res) {
+            if(err) {
+                console.log("error: ", err);
+                  result(null, err);
+               }
+             else{   
+               result(null, res);
+                  }
+              }); 
+  };
+
 Productos.remove = function(id, result){
      sql.query("DELETE FROM Productos WHERE id = ?", [id], function (err, res) {
 
