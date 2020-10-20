@@ -17,6 +17,21 @@ exports.list_all_Productoss = function(req, res) {
   
 };
 
+exports.list_all_ProductossApp = function(req, res) {
+  console.log('res aqui');
+ // res.json({ message: 'Productos successfully' });
+  
+  Productos.getAllProductosApp(req.params.app,function(err, Productos) {
+
+    console.log('controller')
+    if (err)
+      res.send(err);
+      console.log('res', Productos);
+    res.send(Productos);
+  });
+  
+};
+
 
 
 exports.create_a_Productos = function(req, res) {

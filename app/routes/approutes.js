@@ -67,6 +67,9 @@ module.exports = function(app) {
     .get(productoList.list_all_Productoss)
     .post(productoList.create_a_Productos);
 
+    app.route('/productos/app/:app')
+    .get(productoList.list_all_ProductossApp);
+
     app.route('/productos/:id')
     .put(productoList.update_a_Productos);
 
@@ -83,7 +86,18 @@ module.exports = function(app) {
     app.route('/upload')
     .post(upload.subir_archivo);
     
-
+    app.post("/image", function(req, res){
+      var name = req.body.name;
+      var img = req.body.image;
+      var realFile = Buffer.from(img,"base64");
+      fs.writeFile(name, realFile, function(err) {
+          if(err)
+             console.log(err);
+       });
+       res.send("OK");
+     });
+    
+    
 /*
     app.post('/upload',(req,res) => {
     let EDFile = req.files.file;

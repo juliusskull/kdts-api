@@ -9,6 +9,7 @@ var Productos = function(Productos){
     this.precio = Productos.precio;
     this.foto = Productos.foto;
     this.fchalta = Productos.fchalta;
+    this.app = (Productos.app!=null)?Productos.app:1;
 };
 Productos.createProductos = function (newProductos, result) {    
         sql.query("INSERT INTO productos set ?", newProductos, function (err, res) {
@@ -49,6 +50,20 @@ Productos.getAllProductos = function (result) {
                  result(null, res);
                 }
             });   
+};
+Productos.getAllProductosApp = function (app,result) {
+    sql.query("Select * from productos where app=?",[app], function (err, res) {
+
+            if(err) {
+                console.log("error: ", err);
+                result(null, err);
+            }
+            else{
+              console.log('Productoss : ', res);  
+
+             result(null, res);
+            }
+        });   
 };
 Productos.updateById = function(id, Productos, result){
   sql.query("UPDATE productos SET  precio = ?  WHERE id = ?", [Productos.precio, id], function (err, res) {
