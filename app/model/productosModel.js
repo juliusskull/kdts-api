@@ -77,7 +77,8 @@ Productos.updateById = function(id, Productos, result){
             }); 
 };
 Productos.remove = function(id, result){
-     sql.query("DELETE FROM productos WHERE id = ?", [id], function (err, res) {
+    //"DELETE FROM productos WHERE id = ?"
+     sql.query("update productos set fchcad= NOW()   where id= ?", [id], function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);

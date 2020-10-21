@@ -91,7 +91,7 @@ exports.update_a_Productos = function(req, res) {
 exports.delete_a_Productos = function(req, res) {
 
 
-  Productos.remove( req.params.ProductosId, function(err, Productos) {
+  Productos.remove( req.params.id, function(err, Productos) {
     if (err)
       res.send(err);
     res.json({ message: 'Productos successfully deleted' });

@@ -67,6 +67,9 @@ module.exports = function(app) {
     .get(productoList.list_all_Productoss)
     .post(productoList.create_a_Productos);
 
+    app.route('/productos/caducar/:id')
+    .get(productoList.delete_a_Productos);
+
     app.route('/productos/app/:app')
     .get(productoList.list_all_ProductossApp);
 
