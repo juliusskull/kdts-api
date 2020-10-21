@@ -38,7 +38,7 @@ Productos.getProductosById = function (ProductosId, result) {
 };
 
 Productos.getAllProductos = function (result) {
-        sql.query("Select * from productos", function (err, res) {
+        sql.query("Select * from productos where fchcad is null", function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);
@@ -52,7 +52,7 @@ Productos.getAllProductos = function (result) {
             });   
 };
 Productos.getAllProductosApp = function (app,result) {
-    sql.query("Select * from productos where app=?",[app], function (err, res) {
+    sql.query("Select * from productos where app=? and fchcad is null",[app], function (err, res) {
 
             if(err) {
                 console.log("error: ", err);
