@@ -48,6 +48,9 @@ module.exports = function(app) {
     .post(usuarioList.create_a_Usuario)
     .delete(usuarioList.delete_a_Usuario);
 
+    app.route('/usuario/log')
+    .post(usuarioList.is_Usuario);
+
     app.route('/comercios')
     .get(comercioList.list_all_Comercioss)
     .post(comercioList.create_a_Comercios);

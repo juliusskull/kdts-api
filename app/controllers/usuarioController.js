@@ -49,6 +49,14 @@ exports.update_a_Usuario = function(req, res) {
   });
 };
 
+exports.is_Usuario = function(req, res) {
+  Usuario.isUsuario( new Usuario(req.body), function(err, Usuario) {
+    if (err)
+      res.send(err);
+    res.json(Usuario);
+  });
+};
+
 exports.delete_a_Usuario = function(req, res) {
 
   Usuario.remove( req.params.UsuarioId, function(err, Usuario) {
