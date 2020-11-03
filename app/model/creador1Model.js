@@ -34,7 +34,7 @@ Creador1.getCreador1ById = function (Creador1Id, result) {
 };
 
 Creador1.getAllCreador1 = function (result) {
-        sql.query("Select * from Creador1", function (err, res) {
+        sql.query("Select * from creador1", function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);
@@ -48,7 +48,7 @@ Creador1.getAllCreador1 = function (result) {
             });   
 };
 Creador1.updateById = function(id, Creador1, result){
-  sql.query("UPDATE Creador1 SET nro_Creador1 = ? WHERE id = ?", [Creador1.Creador1, id], function (err, res) {
+  sql.query("UPDATE creador1 SET nro_Creador1 = ? WHERE id = ?", [Creador1.Creador1, id], function (err, res) {
           if(err) {
               console.log("error: ", err);
                 result(null, err);
@@ -59,7 +59,7 @@ Creador1.updateById = function(id, Creador1, result){
             }); 
 };
 Creador1.remove = function(id, result){
-     sql.query("DELETE FROM Creador1 WHERE id = ?", [id], function (err, res) {
+     sql.query("DELETE FROM creador1 WHERE id = ?", [id], function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);

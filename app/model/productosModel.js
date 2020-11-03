@@ -9,9 +9,10 @@ var Productos = function(Productos){
     this.precio = Productos.precio;
     this.foto = Productos.foto;
     this.fchalta = Productos.fchalta;
+    this.app = (Productos.app!=null)?Productos.app:1;
 };
 Productos.createProductos = function (newProductos, result) {    
-        sql.query("INSERT INTO Productos set ?", newProductos, function (err, res) {
+        sql.query("INSERT INTO productos set ?", newProductos, function (err, res) {
             console.log("error: -----------");
                 if(err) {
                     console.log("error: "+ err.message, err);
@@ -24,7 +25,7 @@ Productos.createProductos = function (newProductos, result) {
             });           
 };
 Productos.getProductosById = function (ProductosId, result) {
-        sql.query("Select id from Productos where id = ? ", ProductosId, function (err, res) {             
+        sql.query("Select id from productos where id = ? ", ProductosId, function (err, res) {             
                 if(err) {
                     console.log("error: ", err);
                     result(err, null);
@@ -37,7 +38,7 @@ Productos.getProductosById = function (ProductosId, result) {
 };
 
 Productos.getAllProductos = function (result) {
-        sql.query("Select * from Productos", function (err, res) {
+        sql.query("Select * from productos where fchcad is null", function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);
@@ -50,8 +51,22 @@ Productos.getAllProductos = function (result) {
                 }
             });   
 };
+Productos.getAllProductosApp = function (app,result) {
+    sql.query("Select * from productos where app=? and fchcad is null",[app], function (err, res) {
+
+            if(err) {
+                console.log("error: ", err);
+                result(null, err);
+            }
+            else{
+              console.log('Productoss : ', res);  
+
+             result(null, res);
+            }
+        });   
+};
 Productos.updateById = function(id, Productos, result){
-  sql.query("UPDATE Productos SET  precio = ?  WHERE id = ?", [Productos.precio, id], function (err, res) {
+  sql.query("UPDATE productos SET  precio = ?  WHERE id = ?", [Productos.precio, id], function (err, res) {
           if(err) {
               console.log("error: ", err);
                 result(null, err);
@@ -75,7 +90,8 @@ Productos.caducarById = function(id, Productos, result){
   };
 
 Productos.remove = function(id, result){
-     sql.query("DELETE FROM Productos WHERE id = ?", [id], function (err, res) {
+    //"DELETE FROM productos WHERE id = ?"
+     sql.query("update productos set fchcad= NOW()   where id= ?", [id], function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);

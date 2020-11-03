@@ -1,12 +1,27 @@
 'use strict';
 
-var Productos = require('../model/ProductosModel.js');
+var Productos = require('../model/productosModel.js');
 
 exports.list_all_Productoss = function(req, res) {
   console.log('res aqui');
  // res.json({ message: 'Productos successfully' });
   
   Productos.getAllProductos(function(err, Productos) {
+
+    console.log('controller')
+    if (err)
+      res.send(err);
+      console.log('res', Productos);
+    res.send(Productos);
+  });
+  
+};
+
+exports.list_all_ProductossApp = function(req, res) {
+  console.log('res aqui');
+ // res.json({ message: 'Productos successfully' });
+  
+  Productos.getAllProductosApp(req.params.app,function(err, Productos) {
 
     console.log('controller')
     if (err)
@@ -83,7 +98,7 @@ exports.caducar_a_Productos = function(req, res) {
 exports.delete_a_Productos = function(req, res) {
 
 
-  Productos.remove( req.params.ProductosId, function(err, Productos) {
+  Productos.remove( req.params.id, function(err, Productos) {
     if (err)
       res.send(err);
     res.json({ message: 'Productos successfully deleted' });

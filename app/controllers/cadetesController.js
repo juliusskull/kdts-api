@@ -1,6 +1,6 @@
 'use strict';
 
-var Cadetes = require('../model/CadetesModel.js');
+var Cadetes = require('../model/cadetesModel.js');
 
 exports.list_all_Cadetess = function(req, res) {
   console.log('res aqui');

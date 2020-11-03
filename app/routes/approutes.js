@@ -34,7 +34,11 @@ module.exports = function(app) {
   
     app.route('/ot')
     .get(otList.list_all_OTs)
-    .post(otList.list_all_OTs);
+    .post(otList.create_a_OT);
+
+    app.route('/pedido')
+    .get(otList.list_all_OTs)
+    .post(otList.create_a_OT);
 
     app.route('/ot/legajo/:legajo')
     .get(otList.read_a_OT_usuario)
@@ -50,7 +54,7 @@ module.exports = function(app) {
 
     app.route('/usuario/log')
     .post(usuarioList.is_Usuario);
-
+    
     app.route('/comercios')
     .get(comercioList.list_all_Comercioss)
     .post(comercioList.create_a_Comercios);
@@ -66,12 +70,14 @@ module.exports = function(app) {
     .get(productoList.list_all_Productoss)
     .post(productoList.create_a_Productos);
 
+    app.route('/productos/caducar/:id')
+    .get(productoList.delete_a_Productos);
+
+    app.route('/productos/app/:app')
+    .get(productoList.list_all_ProductossApp);
 
     app.route('/productos/:id')
     .put(productoList.update_a_Productos);
-
-    app.route('/productos/caducar/:id')
-    .post(productoList.caducar_a_Productos);
 
     app.route('/usuario/:UsuarioId')
     .get(usuarioList.read_a_Usuario)
@@ -86,14 +92,25 @@ module.exports = function(app) {
     app.route('/upload')
     .post(upload.subir_archivo);
     
-
+    app.post("/image", function(req, res){
+      var name = req.body.name;
+      var img = req.body.image;
+      var realFile = Buffer.from(img,"base64");
+      fs.writeFile(name, realFile, function(err) {
+          if(err)
+             console.log(err);
+       });
+       res.send("OK");
+     });
+    
+    
+/*
     app.post('/upload',(req,res) => {
     let EDFile = req.files.file;
     EDFile.mv(`./files/${EDFile.name}`,err => {
         if(err) return res.status(500).send({ message : err })
-
         return res.status(200).send({ message : 'File upload' })
       })
     });
-    
+    */
   };

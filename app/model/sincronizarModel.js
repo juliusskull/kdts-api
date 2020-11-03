@@ -27,7 +27,7 @@ var Sincronizar = function(Sincronizar){
 };
 Sincronizar.createSincronizar = function (newSincronizar, result) {
      
-        sql.query("INSERT INTO Sincronizar set ?", newSincronizar, function (err, res) {
+        sql.query("INSERT INTO sincronizar set ?", newSincronizar, function (err, res) {
                 
                 if(err) {
                     console.log("error: ", err);
@@ -41,7 +41,7 @@ Sincronizar.createSincronizar = function (newSincronizar, result) {
 
 };
 Sincronizar.getSincronizarById = function (SincronizarId, result) {
-        sql.query("Select id from Sincronizar where nro_Sincronizar = ? ", SincronizarId, function (err, res) {             
+        sql.query("Select id from sincronizar where nro_Sincronizar = ? ", SincronizarId, function (err, res) {             
                 if(err) {
                     console.log("error: ", err);
                     result(err, null);
@@ -53,7 +53,7 @@ Sincronizar.getSincronizarById = function (SincronizarId, result) {
             });   
 };
 Sincronizar.getAllSincronizar = function (result) {
-        sql.query("Select * from Sincronizar", function (err, res) {
+        sql.query("Select * from sincronizar", function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);
@@ -67,7 +67,7 @@ Sincronizar.getAllSincronizar = function (result) {
             });   
 };
 Sincronizar.updateById = function(id, Sincronizar, result){
-  sql.query("UPDATE Sincronizar SET nro_Sincronizar = ? WHERE id = ?", [Sincronizar.Sincronizar, id], function (err, res) {
+  sql.query("UPDATE sincronizar SET nro_Sincronizar = ? WHERE id = ?", [Sincronizar.Sincronizar, id], function (err, res) {
           if(err) {
               console.log("error: ", err);
                 result(null, err);
@@ -78,7 +78,7 @@ Sincronizar.updateById = function(id, Sincronizar, result){
             }); 
 };
 Sincronizar.remove = function(id, result){
-     sql.query("DELETE FROM Sincronizar WHERE id = ?", [id], function (err, res) {
+     sql.query("DELETE FROM sincronizar WHERE id = ?", [id], function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);

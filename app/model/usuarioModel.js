@@ -42,6 +42,7 @@ Usuario.isUsuario = function (newUsuario, result) {
                         }
                     });
                    
+                    
                     console.log("res=>"+res[0].id);
                     result(null, res[0].id);
                 }else{
