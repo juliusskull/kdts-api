@@ -25,9 +25,7 @@ exports.create_a_Comercios = function(req, res) {
   //handles null error 
   /*
    if(!new_Comercios.Comercios || !new_Comercios.status){
-
             res.status(400).send({ error:true, message: 'Please provide Comercios/status' });
-
         }
 else{
   */
@@ -42,7 +40,7 @@ else{
 
 
 exports.read_a_Comercios = function(req, res) {
-  Comercios.getComerciosById(req.params.ComerciosId, function(err, Comercios) {
+  Comercios.getComerciosById(req.params.id, function(err, Comercios) {
     if (err)
       res.send(err);
     res.json(Comercios);

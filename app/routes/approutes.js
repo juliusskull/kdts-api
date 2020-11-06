@@ -60,6 +60,7 @@ module.exports = function(app) {
     .post(comercioList.create_a_Comercios);
 
     app.route('/comercios/:id')   
+    .get(comercioList.read_a_Comercios)
     .put(comercioList.update_a_Comercios);
 
     app.route('/cadetes')

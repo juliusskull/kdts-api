@@ -24,7 +24,7 @@ Comercios.createComercios = function (newComercios, result) {
             });           
 };
 Comercios.getComerciosById = function (ComerciosId, result) {
-        sql.query("Select id from comercios where id = ? ", ComerciosId, function (err, res) {             
+        sql.query("Select * from comercios where id = ? ", ComerciosId, function (err, res) {             
                 if(err) {
                     console.log("error: ", err);
                     result(err, null);
